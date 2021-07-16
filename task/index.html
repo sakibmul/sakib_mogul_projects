@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Geonames">
+        <meta name="author" content="Sakib Mogul">
+        <link rel="stylesheet" href="libs/css/style.css">
+        <title>Geonames API User</title>
+    </head>
+
+<body>
+    
+    <table>
+        <h1>Table of APIs</h1>
+        <tr class="tablerow">
+            <th>API Name</th>
+            <th>Perameters</th>
+            <th>Submit</th>
+        </tr>
+        
+        <tr class="tablerow">
+            <td>Ocean</td>
+            <td>
+                <input type="number" placeholder="latitude" id="lat">
+                <input type="number" placeholder="longitude" id="lng">
+            </td>
+            <td><button class="button" id="btnRun1">Run</button></td>
+        </tr>
+
+        <tr class="tablerow">
+            <td>Weather ICAO Info</td>
+            <td>
+                <input type="text" placeholder="ICAO" id="selIcao">
+            </td>
+            <td><button class="button" id="btnRun2">Run</button></td>
+        </tr>
+
+        <tr class="tablerow">
+            <td>Weather Info</td>
+            <td>
+                <input type="number" placeholder="latitude" id="selLat">
+                <input type="number" placeholder="longitude" id="selLng">
+            </td>
+            <td><button class="button" id="btnRun3">Run</button></td>
+        </tr>
+        
+        <tr>
+            <td colspan="4">
+                <h1>Results</h1>
+                <div>
+                    <p id="results"></p>
+                    <p id="results1"></p>
+                    <p id="results2"></p>
+                    <p id="results3"></p>
+                    <p id="results4"></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <h1>Data Inputs</h1>
+    <h2>Ocean/ Sea Latitude and Longitude</h2>
+    <p>When inputing the Latitude and Longitude for the Ocean/ Sea location the latutude and longitude must be the coordinates a body of water. 
+       If the latutude and longitude coordinates are land based no results will be displayed.</p>
+    
+    <h3>Ocean/ Sea Examples</h3>
+       
+           <p>Latitude: 39. Longitude: -73</p>
+           <p>Latitude: -41. Longitude: 120</p>
+           <p>Latitude: 43. Longitude: 34</p>
+           <p>Latitude: 34. Longitude: 18</p>
+       
+    <h2>Airport ICAO Weather Information</h2>
+    <p>When inputing the ICAO Code for a particular Airport it can be done in upper or lower case.
+       Smaller Airfields and Airports ICAO Codes may not be on the Geonames Database? 
+    </p>
+    
+    <h3>ICAO Examples</h3>
+
+        <p>LSZH</p>
+        <P>EGLL</P>
+        <P>LFPG</P>
+        <P>KJFK</P>
+    
+    <h2>Weather Information Latitude and Longitude</h2>
+    <p>When inputing the Latitude and Longitude for the Weather Infomation the latitude and longitude have to be based on land,
+       if the coordinates inputed are Ocean or Sea based no results would be returned.
+    </p>
+
+    <h3>Weather Info Examples</h3>
+
+        <p>Latitude: 52. Longitude: -0.7</p>
+        <p>Latitude: 43. Longitude: 2</p>
+        <p>Latitude: 39. Longitude: -77</p>
+        <p>Latitude: -35. Longitude: 149</p>
+    
+    <script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+	<script type="application/javascript" src="libs/js/script.js"></script>
+</body>
+</html>

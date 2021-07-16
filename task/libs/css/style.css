@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+}
+
+h1, h2, h3, h4 {
+    text-decoration: underline;
+}
+
+p {
+    font-size: large;
+}
+
+table {
+    text-align: center;
+    border: 2px solid black;
+    width: 1200px;
+    height: 600px;
+    margin-left: 10%;
+}
+
+tr, td, th {
+ border: 2px solid black;
+}
+
+.tablerow {
+    height: 75px;
+}
+
+.button {
+    background-color: cornflowerblue;
+}
