@@ -1,0 +1,42 @@
+body {
+    text-align: center;
+    background-color: blueviolet;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#countryDropdown {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 20%;
+    height: 30px;
+}
+
+#map {
+    position: absolute;
+    top: 15%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modal-header {
+    background-color: blueviolet;
+}
+
+.modal-footer {
+    background-color: blueviolet;
+}
+
+.flag {
+    height: 250px;
+    width: 400px;
+}
+
+.modal-body {
+    background-color: lightgray;
+}
+
+#wikiButton {
+    border-radius: 5px;
+    background-color: rgb(45, 23, 211);
+}
