@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Plugins-->
+    <link rel="stylesheet" href="libs/css/leaflet/leaflet.css">
+    <!--Fontawesome file plugin-->
+    <link rel="stylesheet" href="libs/css/all.min.css">
+    <link rel="stylesheet" href="libs/css/easy-button.css">
+    <link rel="stylesheet" href="libs/css/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="libs/css/MarkerCluster.css">
+    <link rel="stylesheet" href="libs/css/MarkerCluster.Default.css">
+    
+    <!-- Bootstrap CSS v5.0.2 -->
+    <link rel="stylesheet" href="libs/css/bootstrap.min.css">
+    <!--css link Files-->
+    <link rel="stylesheet" href="libs/css/style.css" type="text/css"/>
+    
+    <title>Sakib Mogul Gazetteer</title>
+  </head>
+  <body>
+    <div id="preloader"></div>
+    <!--Navgation Section-->
+    <div class="header-container">
+        <div class="select-container">
+          <select name="select" id="countryDropdown">
+          </select>
+        </div>      
+    </div>
+        
+    <!--Main Map-->
+    <div id="map"></div>
+
+    <!--Creator Information Modal-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title1" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Welcome the Gazetteer Website, the map loaded will go to the users Country highlighting 
+              the highest populated cities.</p>
+            <p>The Buttons to the left of the screen will give details about the Country selected
+              and information on the Capital City.</p>
+            <p>Clicking a City marker will give information regarding the City, while Clicking
+              the markers around the city marker will display Wikipedia Entries.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Country Info Modal-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="dateTime"></p>
+              <br>
+              <h5>Country flag</h5>
+              <img class="flag" alt="Image of countries flag">
+              <br><br>
+              <h5>Country Information</h5>
+              <br>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Continent</td>
+                    <td id="continent"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Capital City</td>
+                    <td id="capital"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Language</td>
+                    <td id="language"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td>Current Population</td>
+                    <td id="population"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Area in sq km</td>
+                    <td id="area"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--Currency Info Modal-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="dateTime"></p>
+              <br><br>
+              <h5>Financial Information</h5>
+              <br>
+              <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Currency Code</td>
+                    <td id="currencyCode"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Currency Name</td>
+                    <td id="currencyName"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Currency Symbol</td>
+                    <td id="currencySymbol"></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">4</th>
+                    <td id="exRate"></td>
+                    <td>To 1 US Dollar</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Weather Info Modal-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="dateTime"></p>
+            <br><br>
+            <h5>Capital City Weather Information</h5>
+            <br>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td></td>
+                  <td id="capTemp"></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td></td>
+                  <td id="weatherDes"></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Wind Speed</td>
+                  <td id="windSpeed"></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td></td>
+                  <td><img id="capWeatherIcon" alt="Weather Icon"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--News Articles-->
+    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content custom">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="dateTime"></p>
+            <br><br>
+            <h5>Top News Headlines</h5>
+            <br>
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td id="newsHead1"></td>
+                  <td><a id="news1"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td id="newsHead2"></td>
+                  <td><a id="news2"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td id="newsHead3"></td>
+                  <td><a id="news3"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td id="newsHead4"></td>
+                  <td><a id="news4"></a></td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td id="newsHead5"></td>
+                  <td><a id="news5"></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Wikipedia Modal-->
+    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="dateTime"></p>
+              <br><br>
+              <p id="wikiSumm"></p>
+              <br>
+              <a id="wikiUrl"></a>
+              <br><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--JS Plugins-->
+    <script src="libs/js/leaflet.js"></script>
+    <script type="application/javascript" src="libs/js/jquery-2.2.3.min.js"></script>
+    <script src="libs/js/bootstrap.min.js"></script>
+    <script src="libs/js/easy-button.js"></script>
+    <script src="libs/js/leaflet.markercluster.js"></script>
+    <script src="libs/js/leaflet.awesome-markers.js"></script>
+    
+    
+    <!--Main javaScript file-->
+    <script src="libs/js/script1.js"></script>
+    </body>
+</html>

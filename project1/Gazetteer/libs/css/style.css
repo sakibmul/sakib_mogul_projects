@@ -1,0 +1,108 @@
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    overflow: hidden;
+    background: #fff;
+}
+
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #f2f2f2;
+    border-top: 6px solid #56829e;
+    border-radius: 50%;
+    width: 60px;height: 60px;
+    -webkit-animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {-webkit-transform: rotate(0deg);
+        transform: rotate(0deg);}
+        100% {-webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-preloader {
+    0% {-webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {-webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+body {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.modal-body {
+    text-align: center;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/*.select-container {
+    border: 2px solid black;
+    border-radius: 3px;
+    width: 20%;
+    height: 30px;
+    margin-left: 70%;
+    position: absolute;
+}*/
+#countryDropdown {
+    margin-top: 20px;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.custom {
+    width: fit-content;
+}
+
+.flag {
+    height: 200px;
+    width: 300px;
+    border: 1px solid black;
+    object-fit: cover;
+}
+    
+/* screen size equiv iphone X and below */
+@media only screen and (max-width: 812px) {
+    #map {
+        align-items: center;
+    }
+    #countryDropdown {
+        width: 50%;
+    }
+}
+/* screen size equiv iphone 7 plus and below */
+@media only screen and (max-width: 736px) {
+    #countryDropdown {
+        width: 50%;
+    }
+}
+/* screen size equiv iphone 5 portrait */
+@media only screen and (max-width: 374px) {
+    .flag {
+        height: 100px;
+        width: 200px;
+    }
+}
